@@ -1,0 +1,32 @@
+<%= form_with(model: debate, local: true) do |form| %>
+  <% if debate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(debate.errors.count, "error") %> prohibited this debate from being saved:</h2>
+
+      <ul>
+      <% debate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :debate_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :argument_id %>
+    <%= form.text_field :argument_id, id: :debate_argument_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :topic %>
+    <%= form.text_field :topic, id: :debate_topic %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

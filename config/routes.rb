@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :topics
+  resources :debates
+  resources :arguments
   get 'users/show'
 
   devise_for :users

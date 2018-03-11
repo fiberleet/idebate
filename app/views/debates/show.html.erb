@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @debate.user %>
+</p>
+
+<p>
+  <strong>Argument:</strong>
+  <%= @debate.argument %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @debate.topic %>
+</p>
+
+<%= link_to 'Edit', edit_debate_path(@debate) %> |
+<%= link_to 'Back', debates_path %>

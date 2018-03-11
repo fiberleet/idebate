@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311031334) do
+ActiveRecord::Schema.define(version: 20180311075009) do
+
+  create_table "arguments", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_arguments_on_user_id"
+  end
+
+  create_table "debates", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "argument_id"
+    t.string "topic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["argument_id"], name: "index_debates_on_argument_id"
+    t.index ["user_id"], name: "index_debates_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
