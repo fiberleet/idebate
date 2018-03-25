@@ -1,3 +1,3 @@
 class Topic < ApplicationRecord
-  belongs_to :debate
+	has_many :debates
 end

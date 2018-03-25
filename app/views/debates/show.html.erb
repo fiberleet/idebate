@@ -1,18 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @debate.user %>
+  <strong>Users:</strong>
+  <% @debate.users.each do |user| %>
+  	<%= user.email %>
+  <% end %>
 </p>
 
 <p>
   <strong>Argument:</strong>
-  <%= @debate.argument %>
+  <%= @debate.arguments %>
 </p>
 
 <p>
   <strong>Topic:</strong>
-  <%= @debate.topic %>
+  <%= @debate.topic.title %>
 </p>
 
 <%= link_to 'Edit', edit_debate_path(@debate) %> |

@@ -15,9 +15,8 @@
   <tbody>
     <% @debates.each do |debate| %>
       <tr>
-        <td><%= debate.user %></td>
-        <td><%= debate.argument %></td>
-        <td><%= debate.topic %></td>
+        <td><% debate.users.each do |user|%><%= user.email %><% end %></td>
+        <td><%= debate.topic.title %></td>
         <td><%= link_to 'Show', debate %></td>
         <td><%= link_to 'Edit', edit_debate_path(debate) %></td>
         <td><%= link_to 'Destroy', debate, method: :delete, data: { confirm: 'Are you sure?' } %></td>

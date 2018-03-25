@@ -14,7 +14,6 @@ class DebatesController < ApplicationController
 
   # GET /debates/new
   def new
-    @debate = Debate.new
   end
 
   # GET /debates/1/edit
@@ -24,8 +23,7 @@ class DebatesController < ApplicationController
   # POST /debates
   # POST /debates.json
   def create
-    @debate = Debate.new(debate_params)
-
+    @debate = current_user.debates.new(debate_params)
     respond_to do |format|
       if @debate.save
         format.html { redirect_to @debate, notice: 'Debate was successfully created.' }
@@ -69,6 +67,6 @@ class DebatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def debate_params
-      params.require(:debate).permit(:user_id, :argument_id, :topic)
+      params.require(:debate).permit(:user_id, :argument_id, :topic_id)
     end
 end
