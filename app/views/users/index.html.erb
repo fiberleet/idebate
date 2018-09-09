@@ -4,15 +4,18 @@
 	 		<%= user.email %>
 		  <% if user == current_user %>
 		    <%= link_to 'Edit Profile', edit_user_path(user),class: 'btn edit-button' %>
-		  <% elsif current_user.friend_with? user %>Already Friends!
-		    <%= button_to "Delete!", friendship_path(id: user.id, friendship_action: 'remove_friendship'), method: :patch, class: "btn btn-primary" %>
-		  <% elsif current_user.invited? user %>Friend request sent!
-		    <%= button_to "Unsend!", friendship_path(id: user.id, friendship_action: 'unsend'), method: :patch, class: "btn btn-small btn-primary" %>
-		  <% elsif current_user.invited_by? user %>
-		    <%= button_to "Accept!", friendship_path(id: user.id, friendship_action: 'approve'), method: :patch, class: "btn btn-small btn-primary" %>
-		    <%= button_to "Reject!", friendship_path(id: user.id, friendship_action: 'remove_friendship'), method: :patch, class: "btn btn-small btn-primary" %>
+		  
+		  <% elsif current_user.friends_with? user %>Already Friends!
+		    <%= button_to "Delete!", friendship_path(id: user.id, friendship_action: 'remove_friend'), method: :patch, class: "btn btn-primary" %>
+		  
+		  <% elsif current_user.pending_friends.include? user %>Friend request sent!
+		  
+		  <% elsif current_user.requested_friends.include? user %>
+		    <%= button_to "Accept!", friendship_path(id: user.id, friendship_action: 'accept_request'), method: :patch, class: "btn btn-small btn-primary" %>
+		    <%= button_to "Reject!", friendship_path(id: user.id, friendship_action: 'decline_request'), method: :patch, class: "btn btn-small btn-primary" %>
+		  
 		  <% else %>
-		    <%= button_to "Request Friend", friendship_path(id: user.id, friendship_action: 'invite'), method: :patch, class: "btn btn-primary" %>
+		    <%= button_to "Request Friend", friendship_path(id: user.id, friendship_action: 'friend_request'), method: :patch, class: "btn btn-primary" %>
 		  <% end %>
 		</li>
   <% end %>

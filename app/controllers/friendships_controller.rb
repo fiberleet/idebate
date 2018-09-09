@@ -1,16 +1,16 @@
 class FriendshipsController < ApplicationController
-  ALLOWED_FRIENDSHIP_ACTIONS = %w('invite' 'approve' 'remove_friendship' 'block', 'unblock')
-
+  ALLOWED_FRIENDSHIP_ACTIONS = %w(friend_request accept_request decline_request remove_friend block_friend unblock_friend)
   before_action :authenticate_user!
 
   def index
     @friends = current_user.friends
-    @pending_invited_by = current_user.pending_invited_by
-    @pending_invited = current_user.pending_invited
+    @pending_invited_by = current_user.pending_friends
+    @pending_invited = current_user.requested_friends
   end
 
   def update
     @friend = User.find(params[:id])
+    
     current_user.send(friendship_action, @friend) if friendship_action
     redirect_back(fallback_location: root_path)
   end

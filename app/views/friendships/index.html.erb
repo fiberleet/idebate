@@ -13,6 +13,7 @@
 <tbody>
 	<% @pending_invited_by.each do |friend| %>
 		<tr>
+			<th>Found a friend request</th>
 			<th><%= friend.email %></th>
 		</tr>
 	<% end %>
@@ -23,6 +24,7 @@
 <tbody>
 	<% @pending_invited.each do |friend| %>
 		<tr>
+			<th>Found a requested friend</th>
 			<th><%= friend.email %></th>
 		</tr>
 	<% end %>

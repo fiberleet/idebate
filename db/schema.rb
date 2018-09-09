@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180802091655) do
+ActiveRecord::Schema.define(version: 20180909111658) do
 
   create_table "arguments", force: :cascade do |t|
     t.integer "debate_id"
@@ -40,11 +40,14 @@ ActiveRecord::Schema.define(version: 20180802091655) do
   end
 
   create_table "friendships", force: :cascade do |t|
+    t.string "friendable_type"
     t.integer "friendable_id"
     t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "blocker_id"
-    t.boolean "pending", default: true
-    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
+    t.integer "status"
+    t.index ["friendable_type", "friendable_id"], name: "index_friendships_on_friendable_type_and_friendable_id"
   end
 
   create_table "topics", force: :cascade do |t|
