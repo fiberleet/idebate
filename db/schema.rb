@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325033133) do
+ActiveRecord::Schema.define(version: 20180802091655) do
 
   create_table "arguments", force: :cascade do |t|
     t.integer "debate_id"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20180325033133) do
     t.datetime "updated_at", null: false
     t.index ["argument_id"], name: "index_debates_on_argument_id"
     t.index ["topic_id"], name: "index_debates_on_topic_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.integer "blocker_id"
+    t.boolean "pending", default: true
+    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
   end
 
   create_table "topics", force: :cascade do |t|

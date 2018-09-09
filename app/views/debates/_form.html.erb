@@ -13,6 +13,9 @@
   <div class="select">
     <%= collection_select(:debate,:topic_id, Topic.all, :id, :title)%>
   </div>
+  <div class="select">
+    <%= collection_select(:user, :user_id, current_user.friends, :id, :email)%>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -1,0 +1,29 @@
+<h1>Friends</h1>
+
+<tbody>
+	<% @friends.each do |friend| %>
+		<tr>
+			<th><%= friend.email %></th>
+		</tr>
+	<% end %>
+</tbody>
+
+<h1>Friend Requests</h1>
+
+<tbody>
+	<% @pending_invited_by.each do |friend| %>
+		<tr>
+			<th><%= friend.email %></th>
+		</tr>
+	<% end %>
+</tbody>
+
+<h1>Pending Friends</h1>
+
+<tbody>
+	<% @pending_invited.each do |friend| %>
+		<tr>
+			<th><%= friend.email %></th>
+		</tr>
+	<% end %>
+</tbody>

@@ -9,7 +9,14 @@
 
 <p>
   <strong>Argument:</strong>
-  <%= @debate.arguments %>
+  <% @debate.arguments.each do |argument| %>
+  	<li>
+  		<%= argument.title %>
+  	</li>
+  	<li>
+  		<%= argument.body %>
+  	</li>
+  <% end %>
 </p>
 
 <p>
